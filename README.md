@@ -63,3 +63,10 @@ ChatVRMでは返答文の音声読み上げにKoeiro APIを使用しています
 Koeiro APIの仕様や利用規約については以下のリンクや公式サイトをご確認ください。
 
 - [http://koeiromap.rinna.jp/](http://koeiromap.rinna.jp/)
+
+## docker build
+
+```
+docker image build -t chatvrm:latest . 
+docker run -it -v `pwd`:/work --name vrm -p 3000:3000 chatvrm:latest bash
+```

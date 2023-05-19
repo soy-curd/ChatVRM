@@ -29,11 +29,13 @@ const montserrat = Montserrat({
   subsets: ["latin"],
 });
 
+const OPENAI_KEY = process.env.OPENAI_KEY || "";
+
 export default function Home() {
   const { viewer } = useContext(ViewerContext);
 
   const [systemPrompt, setSystemPrompt] = useState(SYSTEM_PROMPT);
-  const [openAiKey, setOpenAiKey] = useState("");
+  const [openAiKey, setOpenAiKey] = useState(OPENAI_KEY);
   const [koeiroParam, setKoeiroParam] = useState<KoeiroParam>(DEFAULT_PARAM);
   const [chatProcessing, setChatProcessing] = useState(false);
   const [chatLog, setChatLog] = useState<Message[]>([]);
@@ -195,7 +197,7 @@ export default function Home() {
     },
     [systemPrompt, chatLog, handleSpeakAi, openAiKey, koeiroParam]
   );
-
+  
   return (
     <div className={`${m_plus_2.variable} ${montserrat.variable}`}>
       <Meta />

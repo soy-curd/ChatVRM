@@ -2,6 +2,8 @@ import { useContext, useCallback } from "react";
 import { ViewerContext } from "../features/vrmViewer/viewerContext";
 import { buildUrl } from "@/utils/buildUrl";
 
+const VRM_FILE = process.env.VRM_FILE || "Zunda_F_Type_vrm.vrm";
+
 export default function VrmViewer() {
   const { viewer } = useContext(ViewerContext);
 
@@ -9,7 +11,7 @@ export default function VrmViewer() {
     (canvas: HTMLCanvasElement) => {
       if (canvas) {
         viewer.setup(canvas);
-        viewer.loadVrm(buildUrl("/AvatarSample_B.vrm"));
+        viewer.loadVrm(buildUrl("/" + VRM_FILE));
 
         // Drag and DropでVRMを差し替え
         canvas.addEventListener("dragover", function (event) {
